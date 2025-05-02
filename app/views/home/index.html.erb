@@ -1,0 +1,73 @@
+<div class="min-h-screen bg-gradient-to-br from-blue-500 to-teal-500">
+  <div class="container mx-auto px-4 py-8">
+    <p class="text-white text-lg mb-4"><%= notice %></p>
+
+    <!-- Hero Section -->
+    <div class="text-center py-20">
+      <h1 class="text-5xl font-bold text-white mb-4">Waves List</h1>
+      <p class="text-2xl text-white mb-8">Find your perfect wave. Community-driven surf spot information.</p>
+      
+      <div class="flex justify-center gap-4">
+        <% if Current.user %>
+          <%= link_to "Explore Surf Spots", surf_spots_path, class: "bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold hover:bg-blue-100 transition" %>
+        <% else %>
+          <%= link_to "Sign Up", sign_up_path, class: "bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold hover:bg-blue-100 transition" %>
+          <%= link_to "Sign In", sign_in_path, class: "border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition" %>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="bg-white/10 backdrop-blur-md rounded-xl p-8 mb-12">
+      <h2 class="text-3xl font-bold text-white mb-6 text-center">How it works</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white/20 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold text-white mb-3">Find Surf Spots</h3>
+          <p class="text-white">Discover surf spots around the world with details about wave types, difficulty levels, and more.</p>
+        </div>
+        
+        <div class="bg-white/20 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold text-white mb-3">Community Knowledge</h3>
+          <p class="text-white">Contribute to the platform by suggesting changes to spots, rating experiences, and sharing insights.</p>
+        </div>
+        
+        <div class="bg-white/20 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold text-white mb-3">Plan Your Trip</h3>
+          <p class="text-white">Get information about monthly costs, rental options, and surf lessons to plan your surf adventures.</p>
+        </div>
+      </div>
+    </div>
+    
+    <% if Current.user %>
+      <!-- User Dashboard -->
+      <div class="bg-white/10 backdrop-blur-md rounded-xl p-8">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-white">Your Dashboard</h2>
+          <div class="flex items-center">
+            <p class="text-white mr-4">Signed in as <%= Current.user.email %></p>
+            <%= button_to "Log out", Current.session, method: :delete, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition" %>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white/20 p-5 rounded-lg">
+            <%= link_to "Change email address", edit_identity_email_path, class: "text-white underline hover:text-blue-200" %>
+          </div>
+          
+          <div class="bg-white/20 p-5 rounded-lg">
+            <%= link_to "Change password", edit_password_path, class: "text-white underline hover:text-blue-200" %>
+          </div>
+          
+          <div class="bg-white/20 p-5 rounded-lg">
+            <%= link_to "Devices & Sessions", sessions_path, class: "text-white underline hover:text-blue-200" %>
+          </div>
+          
+          <div class="bg-white/20 p-5 rounded-lg">
+            <%= link_to "My Reviews", reviews_path, class: "text-white underline hover:text-blue-200" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

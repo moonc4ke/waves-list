@@ -1,0 +1,62 @@
+<%= form_with(model: review, class: "contents") do |form| %>
+  <% if review.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% review.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": review.errors[:user_id].none?, "border-red-400 focus:outline-red-600": review.errors[:user_id].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :surf_spot_id %>
+    <%= form.text_field :surf_spot_id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": review.errors[:surf_spot_id].none?, "border-red-400 focus:outline-red-600": review.errors[:surf_spot_id].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :rating %>
+    <%= form.number_field :rating, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": review.errors[:rating].none?, "border-red-400 focus:outline-red-600": review.errors[:rating].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :comment %>
+    <%= form.textarea :comment, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": review.errors[:comment].none?, "border-red-400 focus:outline-red-600": review.errors[:comment].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :wave_quality %>
+    <%= form.number_field :wave_quality, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": review.errors[:wave_quality].none?, "border-red-400 focus:outline-red-600": review.errors[:wave_quality].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :consistency %>
+    <%= form.number_field :consistency, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": review.errors[:consistency].none?, "border-red-400 focus:outline-red-600": review.errors[:consistency].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :accessibility %>
+    <%= form.number_field :accessibility, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": review.errors[:accessibility].none?, "border-red-400 focus:outline-red-600": review.errors[:accessibility].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :amenities %>
+    <%= form.number_field :amenities, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": review.errors[:amenities].none?, "border-red-400 focus:outline-red-600": review.errors[:amenities].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :beauty %>
+    <%= form.number_field :beauty, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": review.errors[:beauty].none?, "border-red-400 focus:outline-red-600": review.errors[:beauty].any?}] %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
